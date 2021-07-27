@@ -1,8 +1,11 @@
 # Cryptocurrency Microservice
 
-This illustrates how to build a simple microservice in Go
+This repository contains a simple microservice in Go
 which accesses the api.hitbtc.com API server to obtain prices
 from various cryptocurrencies.
+This repository also contains instructions for deploying
+this microservice in a local Kubernetes cluster using the
+Kind utility.
 
 ## Development environment
 
