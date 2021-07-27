@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: cryptoserver
+  labels:
+    app: cryptoserver
+spec:
+  serviceName: cryptoserver
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cryptoserver
+  template:
+    metadata:
+      labels:
+        app: cryptoserver
+    spec:
+      terminationGracePeriodSeconds: 1800
+      containers:
+      - name: cryptoserver
+        image: craigcryptoapp:main
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8081
+          name: intra-node
+        resources:
+          limits:
+            cpu: "500m"
+            memory: 1Gi
+          requests:
+            cpu: "500m"
+            memory: 1Gi
+        env:
+          - name: HTTP_PORT
+            value: "8081"

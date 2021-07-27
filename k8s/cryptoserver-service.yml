@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: cryptoserver
+  name: cryptoserver
+spec:
+  clusterIP: None
+  ports:
+  - port: 8081
+  selector:
+    app: cryptoserver
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: ambassador
+  name: cryptoserver-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: "/cryptoserver"
+        backend:
+          serviceName: cryptoserver
+          servicePort: 8081
