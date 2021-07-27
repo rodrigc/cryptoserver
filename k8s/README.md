@@ -37,7 +37,7 @@ kubectl port-forward service/cryptoserver 8081:8081
 **TODO: In future, replace kubectl port-forward with an Ingress controller or LoadBalancer**
 `
 
-### Test the crypto server:
+### Test the crypto server with curl
 
 ```
 curl -v  http://localhost:8081/currency/all
@@ -45,4 +45,9 @@ curl -v  http://localhost:8081/currency/btc
 curl -v  http://localhost:8081/currency/nonexistent
 ```
 
+### Test the crypto server with `go test`
+
+```
+cd ..
+make test
 ```
